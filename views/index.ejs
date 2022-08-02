@@ -1,47 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- declaring that we are using the UTF-8 character set  -->
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Todo List: </h1>
-    <ul class="todoItems">
-    <% for(let i=0; i < items.length; i++) {%>
-        <li class="item">
-            <% if(items[i].completed === true) {%>
-                <span class='completed'><%= items[i].thing %></span>
-            <% }else{ %>
-                <span><%= items[i].thing %></span>
-            <% } %>    
-            <span class='fa fa-trash'></span>
-        </li>
-    <% } %>
-    </ul>
+    <html lang="en">
 
-    <h2>Left to do: <%= left %></h2>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
 
-    <h2>Add A Todo:</h2>
+    <!-- start of the body tag  -->
 
-    <form action="/addTodo" method="POST">
-        <input type="text" placeholder="Thing To Do" name="todoItem">
-        <input type="submit">
-    </form>
-    
+    <body>
 
-    <script src='js/main.js'></script>
-</body>
-</html>
+        <!-- start main index file  -->
+        <h1>Todo List: </h1>
+
+        <!-- start of the main list where all the todo items will be displayed -->
+
+        <ul class="todoItems">
+
+            <!-- start of the loop where we just go through all the items and style them whether if they are finished or not -->
+
+            <% for(let i=0; i < items.length; i++) {%>
+
+                <!-- start of list items  -->
+
+                <li class="item">
+
+                    <!-- start of conditional to decide whether to use .completed css class or use a simple class  -->
+                    <!-- if the current ith item's completed property is true then we use the following completed class  -->
+                    <% if(items[i].completed===true) {%>
+                        <span class='completed'>
+                            <%= items[i].thing %>
+                        </span>
+
+                        <!-- if not then we use the following  -->
+                        <% }else{ %>
+                            <span>
+                                <%= items[i].thing %>
+                            </span>
+                            <% } %>
+
+                                <!-- finishing off both cases with the same span   -->
+                                <!-- targetting both the fa and fa-trash classes   -->
+
+                                <span class='fa fa-trash'></span>
+
+                                <!-- end of list items  -->
+                </li>
+                <!-- end of the loop  -->
+                <% } %>
+
+                    <!-- End of the main dynamic portion of the ejs file  -->
+        </ul>
+
+        <!-- here we are plugging in the things left todo in the h2 tag  -->
+
+        <h2>Left to do: <%= left %>
+        </h2>
+
+        <!-- Start of a small form where we add new todo items  -->
+
+        <!-- header for the todo list item  -->
+        <h2>Add A Todo:</h2>
+        <!-- form that routes to /addTodo with method post that declares that we add the following items in our list  -->
+        <form action="/addTodo" method="POST">
+
+            <!-- form that routes to /addTodo with method post that declares that we add the following items in our list  -->
+
+            <input type="text" placeholder="Thing To Do" name="todoItem">
+
+            <!-- submit button to send our form  -->
+            <input type="submit">
+
+            <!-- end of our todo form  -->
+        </form>
+
+        <!-- here we are adding our javascript file at the end of our html file so that the code loads at the end once all elements have been loaded  -->
+        <script src='js/main.js'></script>
+
+        <!-- end of body  -->
+    </body>
+    <!-- end of html  -->
+
+    </html>

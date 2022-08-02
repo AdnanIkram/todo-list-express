@@ -1,6 +1,10 @@
+/* Makes the main headings color red */
 h1{
     color: red;
 }
+
+/* Makes sure the completed class is shown as striked through */
+
 .completed{
     color: gray;
     text-decoration: line-through;
